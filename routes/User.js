@@ -11,6 +11,11 @@ app.use(express.urlencoded({ extended: true }));
 // application/json으로 들어오는 정보들을 넣기 위해서 사용하는 코드
 app.use(bodyParser.json());
 
+const cookieParser = require("cookie-parser");
+
+app.use(cookieParser());
+// res.cookie("x_auth", user.token) 이런식으로 하면 x_auth 라는 이름으로 token이 들어옴을 브라우져의 cookie부분에서 볼 수 있음.
+
 const { User } = require("../models");
 
 app.post("/register", async (req, res) => {
